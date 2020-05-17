@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+    <h1>Add product</h1>
+    <div>
+        <h2>Create a new account</h2>
+        <span>Name:</span> <input type="text" id="name" />
+        <br><br>
+        <span>Description:</span> <textarea type="text" id="description"></textarea>
+        <br>
+        <span>Size:</span>
+        <select name="" id="size">
+            <option>XS</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+        </select>
+        <label>Type:</label>
+        <span for="male">Male</span>
+        <input type="radio" id="male" name="type" value="male">
+        <span for="female">Female</span>
+        <input type="radio" id="female" name="type" value="female"><br>
+        <span>Category:</span> <input type="text" id="category" />
+        <br>
+        <label for="price">Price (between 50 and 500):</label>
+        <input type="range" id="price" name="price" min="50" max="500">
+        <br>
+        <span>Image URL:</span><input type="text" id="image" />
+        <br>
+        <button id="createBtn">Create</button>
+    </div>
+    <script src="add-product-page.js"></script>
+
+</body>
+
+</html>

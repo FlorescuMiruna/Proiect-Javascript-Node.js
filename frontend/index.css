@@ -1,0 +1,106 @@
+:root {
+    --light: #FCE786;
+    --main-blue: rgb(0, 45, 68);
+    --second-blue: #36A1D4;
+    --impact-red: #D22D16;
+}
+
+body {
+    background-color: var(--main-blue);
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+#imagine-animal {
+    width: 45vw;
+    ;
+}
+
+.label,
+button {
+    margin-top: 1vh !important;
+}
+
+.sectiune-adauga {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    left: 20vw;
+    background-color: var(--second-blue);
+    width: 50vw;
+    padding: 1%;
+    border: 2px solid black;
+}
+
+input {
+    margin-top: 10px;
+}
+
+#clothes-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.item {
+    border: 5px solid var(--second-blue);
+    padding: 2%;
+    margin: 1px;
+}
+
+img {
+    width: 20vw;
+}
+
+.remove_item {
+    font-size: 40px;
+    color: white;
+}
+
+button {
+    margin: .2em .1em;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border: none;
+    border-bottom: .15em solid black;
+    border-radius: 3px;
+    padding: 0.65em 1.3em;
+    background-color: var(--impact-red);
+    color: white;
+}
+
+button:hover {
+    background: linear-gradient( #D22D16, rgb(142, 129, 255));
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.remove_item:hover {
+    cursor: pointer;
+    color: var(--impact-red)
+}
+
+.favourite {
+    color: yellow;
+}
