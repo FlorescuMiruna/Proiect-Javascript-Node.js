@@ -2,11 +2,11 @@
     --light: #FCE786;
     --main-blue: rgb(0, 45, 68);
     --second-blue: #36A1D4;
-    --impact-red: #D22D16;
+    --impact-red: rgb(145, 26, 224);
 }
 
 body {
-    background-color: var(--main-blue);
+    background-color: lightcoral;
     color: white;
 }
 
@@ -85,7 +85,7 @@ button {
 }
 
 button:hover {
-    background: linear-gradient( #D22D16, rgb(142, 129, 255));
+    background: linear-gradient( rgb(133, 18, 199), rgb(142, 129, 255));
     cursor: pointer;
 }
 

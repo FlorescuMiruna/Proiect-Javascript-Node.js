@@ -1,25 +1,26 @@
 {
-  "name": "jsproject",
-  "version": "1.0.0",
-  "description": "Web technics js project with node js and ajax",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FlorescuMiruna/javascript-project.git"
-  },
-  "author": "Florescu Miruna Stefania",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FlorescuMiruna/javascript-project/issues"
-  },
-  "homepage": "https://github.com/FlorescuMiruna/javascript-project#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "uid": "^1.0.0"
-  }
+    "name": "jsproject",
+    "version": "1.0.0",
+    "description": "Web technics js project with node js and ajax",
+    "main": "index.js",
+    "scripts": {
+        "start": "node frontend-url.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/FlorescuMiruna/javascript-project.git"
+    },
+    "author": "Florescu Miruna Stefania",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/FlorescuMiruna/javascript-project/issues"
+    },
+    "homepage": "https://github.com/FlorescuMiruna/javascript-project#readme",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "uid": "^1.0.0"
+    }
 }

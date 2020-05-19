@@ -16,7 +16,7 @@ const clothesMan = [{
         type: 'Masc',
         category: 'Jeans',
         price: '150',
-        image: 'https://www.yaaku.com/upload/201906/04/YW58042_7.jpg'
+        image: 'https://images.timberland.com/is/image/TimberlandEU/A297TA58-hero?$PDP-FULL-IMAGE$'
     },
     {
         id: uid(5),
@@ -47,7 +47,7 @@ let clothes = [{
         size: 'Medium',
         type: 'Fem',
         category: 'Dresses',
-        price: '180',
+        price: '400',
         image: 'https://cdn.shopify.com/s/files/1/2244/5817/products/1_f5c4dc38-573b-4081-bae1-095cee5f5bc5.jpg?v=1556177598'
     }
 
@@ -63,8 +63,8 @@ function copyRequestBody(id, { name, category, price, description, image, size, 
 app.get('/', function(_, res) {
     res.send('Hello World! Welcome, I am Miruna! This is my server running...');
 });
-app.get('/get-clothes', function(_, res) { //Redenumim path-urile 
-    res.send(clothes.sort((itemA, itemB) => itemA.id - itemB.id).map(copyRequestBody));
+app.get('/get-clothes', function(_, res) {
+    res.status(200).send(clothes.sort((itemA, itemB) => itemA.id - itemB.id).map(copyRequestBody));
 
 });
 
@@ -104,12 +104,12 @@ app.put('/edit-clothes/:id', function(req, res) {
 });
 
 
-app.post('/add-clothes', function(req, res) {
+app.post('/add-clothes', function(req, res) { //Create new product
     const id = uid(5);
     const newProduct = copyRequestBody(id, req.body || {});
     clothes.push(newProduct);
 
-    res.status(201).send(newProduct); //Send status 201 Created and the created clothe
+    res.status(201).send(newProduct); //Send status 201 Created and the created a product
 });
 
 
