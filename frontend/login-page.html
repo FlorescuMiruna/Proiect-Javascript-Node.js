@@ -11,26 +11,36 @@
 <body>
     <h1>Login/Register</h1>
     <div>
-        <!-- Login: input text, mail, pass, checkbox and radiobutton, select and range -->
-        <h2>Create a new account</h2>
+
+
         <form>
-            <span>Name:</span> <input type="text" id="name" />
+            <span>Name:</span> <input type="text" id="name" class="box" />
             <br>
 
-            <span>Email:</span> <input type="email" id="email" />
+            <span>Email:</span> <input type="email" id="email" class="box" />
             <br>
 
-            <span>Password:</span> <input type="password" id="password" />
+            <span>Password:</span> <input type="password" id="password" class="box" />
             <br>
 
-            <span>Hobby:</span>
-            <span for="hiking">Hiking</span>
-            <input type="checkbox" id="hiking" name="hobby" value="hiking">
-            <span for="reading">Reading</span>
-            <input type="checkbox" id="reading" name="hobby" value="reading"><br>
+            <span>Choose a background theme</span>
+            <select id="backround-theme" name="" class="box">
+                <option>Party</option>
+                <option>Sea</option>
+                <option>Pink</option>
+            </select>
+
+
+            <span>The style I am looking for:</span>
+            <span for="casual">Casual</span>
+            <input type="checkbox" id="casual" name="stylee" value="casual">
+            <span for="elegant">Elegant</span>
+            <input type="checkbox" id="elegant" name="stylee" value="elegant"><br>
+
         </form>
         <button id="register">Register</button>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="login-page.js"></script>
 
 </body>

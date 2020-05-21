@@ -3,20 +3,66 @@ const removeVoucherBtn = document.querySelector("#removeVoucher");
 const addProductBtn = document.querySelector("#addProduct");
 const stopAlertBtn = document.querySelector("#stopAlerts");
 
+const showPriceBtn = document.querySelector("#showPrice");
+
+let discount = Math.random() * 100;
+
+discount = discount.toString();
+discount = "Reduceri de pana la " + discount + ' %';
+var clothesArray = [];
+var totalPrice = 0;
+let color = randomColor(); //Folosesc o functie importata din npm
+
+function showAlert() {
+    // console.log(shopBtn.name);
+    // setTimeout(function() {
+    //     Swal.fire(discount);
+    // }, 30000);
+    console.log("alert");
+}
+showAlert();
+
+
+document.getElementById("showPrice").addEventListener("click", displayPrice);
+
+function displayPrice() {
+    document.getElementById("total_price").innerHTML = totalPrice;
+}
+
+
+document.getElementById("title").style.color = color;
+//Iau titlul si ii dau o culoare generata random, care se va schimba de fiecare data cand dam
+//refresh paginii
+
+
+const backgroundTheme = localStorage.getItem("background-theme");
+
+if (backgroundTheme == "Sea")
+    document.body.style.backgroundImage = "url(sea.jpg)";
+
+if (backgroundTheme == "Pink")
+    document.body.style.backgroundImage = "url(pink.jpg)";
+
+
+if (backgroundTheme == "Party")
+    document.body.style.backgroundImage = "url(party.jpg)";
+
+
 const listTag = document.getElementsByTagName("list");
 var iconArray = ["10% voucher", "20% voucher"];
 var myInteval;
 var isUserDisplayed = false;
 
-//Event listener for add button
+//Event listener pentru butonul de adaugare , ne redirectioneaza catre o pagina 
+//unde vom putea adauga un nou item
 addProductBtn.addEventListener("click", async function(event) {
     //Se opreste la click-ul efectuat si nu se propaga mai departe in copii
-    //atunci cand ai o structura complexa cu mai multe obiecte, divuri sau imagini
     event.preventDefault();
     window.location.replace("file:///C:/Users/Miruna/Desktop/web/Proiect/javascript-project/frontend/add-product-page.html");
 });
 
-//Event listener for remove button
+
+//Event listener pentru butonul de remove 
 removeVoucherBtn.addEventListener("click", async function() {
     iconArray.pop();
     console.log("new array", iconArray);
@@ -24,7 +70,8 @@ removeVoucherBtn.addEventListener("click", async function() {
 
 });
 
-//Event listener for stop allerts
+//Event listener pentru butonul de oprire a "alert"-urilor
+
 stopAlertBtn.addEventListener("click", async function() {
     console.log(localStorage)
     localStorage.removeItem("messageOffer");
@@ -34,12 +81,15 @@ stopAlertBtn.addEventListener("click", async function() {
 });
 
 //Initialize
+
 function initializeItems() {
     const removeArray = document.querySelectorAll(".remove_item");
+    const shopBtnArray = document.querySelectorAll("#shop");
 
-    removeArray.forEach(removeItem => {
-        removeItem.addEventListener("click", async function() {
-            let id = removeItem.parentElement.parentElement.dataset.id;
+
+    removeArray.forEach(removeItemBtn => {
+        removeItemBtn.addEventListener("click", async function() {
+            let id = removeItemBtn.parentElement.parentElement.dataset.id;
             console.log("id este", id)
             const url = "http://localhost:4200/delete-clothes/" + id;
             console.log(url);
@@ -49,7 +99,20 @@ function initializeItems() {
         })
     });
 
+    shopBtnArray.forEach(shopItemBtn => {
+        shopItemBtn.addEventListener("click", async function() {
+            const id = shopItemBtn.parentElement.parentElement.dataset.id;
+            const foundItem = Object.values(clothesArray).find(item => item.id.id === id);
+            console.log("FoundItem:", foundItem);
+            totalPrice = totalPrice + parseInt(foundItem.id.price);
+            console.log("Total price: ", totalPrice);
+        })
+    })
+
 }
+
+
+
 
 function addVoucherInArray(voucherString = '') {
     iconArray.push(voucherString);
@@ -72,46 +135,64 @@ async function showViewPage() {
     localStorage.setItem("messageOffer", "Nu uita sa verifici ofertele");
 
     const response = await fetch('http://localhost:4200/get-clothes');
-    const clothesArray = await response.json();
+    clothesArray = await response.json();
     container.innerHTML = ''
     console.log("clothesArray", clothesArray);
-    const user = localStorage.getItem("userName");
+    const user = localStorage.getItem("userName"); ///Luam numele user-ului din pagina cu formularul
+
+
     if (user && !isUserDisplayed) {
         isUserDisplayed = true;
-        // create a new header element
+        // Creez un nou element header
         const header = document.createElement("h2");
-        //add some content text for header
-        const node = document.createTextNode(`Welcome ${user} This is new`);
-        //add the text to header
+        // Adaug numele utilizatorului completat in formular
+        const node = document.createTextNode(`Welcome to our online shop, ${user}  !`);
+        //Punem textul in variabila nostra
         header.appendChild(node);
-        // add the newly created element and its content into the DOM 
+        // adaugam elementul nostru nou-creat in header, folosind DOM
         var currentHeader = document.getElementById("header");
         document.body.insertBefore(header, currentHeader);
     }
     myInterval = setInterval(function() {
         if (localStorage.getItem("messageOffer")) {
-            alert(localStorage.getItem("messageOffer"))
+            const msj = localStorage.getItem("messageOffer");
+            Swal.fire({
+                title: msj,
+                width: 600,
+                padding: '3em',
+                background: '#fff url(discount.jpg)',
+                backdrop: `
+                  rgba(0,0,123,0.4)
+                  left top
+                  no-repeat
+                `
+            })
+
         } else {
-            alert("Verifica vouchere!")
+
+            alert("Verifica vouchere!");
         }
-    }, 10000);
+    }, 100000);
     showIconsList(iconArray);
     console.log(localStorage.getItem("userName"));
 
-    //Punctul de creare/stergere elemente intra aici la template literals?
+    //Folosim Template literals
+
     clothesArray.forEach(element => {
         const item = Object.values(element)[0];
+
         const product = `<div class="item" data-id=${item.id}>
         <h3>Name: ${item.name}</h3>
         <h3>Price: ${item.price}</h3>
         <img src=${item.image} alt="https://micilevedete.ro/wp-content/uploads/2017/04/yellow.png">
         <div class="menu">
-            <button>Shop</button>
-            <i class="fa remove_item" aria-hidden="true">X</i>
+            <button id="shop" >Shop</button>
+            <i class="remove_item" aria-hidden="true">X</i>
         </div>`
-
-        container.insertAdjacentHTML("beforeend", product);
+        container.insertAdjacentHTML("beforeend", product); ///Va insera datele despre item pe pozitie
+        ///la finalul fisierului HTML
     });
+
 
     initializeItems();
 }
@@ -119,10 +200,24 @@ async function showViewPage() {
 //Delete product
 async function deleteProduct(url = '') {
     const response = await fetch(url, {
-        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+        method: 'DELETE', // Face trimitere catre server, catre metoda de stergere a unui element 
     });
     return response;
 
 }
 
 showViewPage()
+
+
+input.onchange = function() { //Nu putem accesa URL-ul unui file local doar folosind 
+    //input type-ul, avem nevoie de un fileReader pentru a putea incarca dinamic un
+    //fisier audio
+    var sound = document.getElementById('audio');
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        sound.src = this.result;
+        sound.controls = true;
+        sound.play();
+    };
+    reader.readAsDataURL(this.files[0]);
+}

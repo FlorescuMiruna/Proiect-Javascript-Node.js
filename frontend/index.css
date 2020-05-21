@@ -6,8 +6,9 @@
 }
 
 body {
-    background-color: lightcoral;
-    color: white;
+    background-image: url("fundal.jpg");
+    background-size: cover;
+    color: black;
 }
 
 h1,
@@ -15,8 +16,16 @@ h2,
 h3,
 h4,
 h5 {
-    color: white;
-    text-shadow: 2px 2px black;
+    align-items: center;
+    text-align: center;
+    color: black;
+    text-shadow: 2px 2px plum;
+}
+
+p {
+    color: black;
+    font-size: xx-large;
+    text-shadow: 2px 2px plum;
 }
 
 #imagine-animal {
@@ -69,6 +78,17 @@ img {
     color: white;
 }
 
+#register {
+    margin-bottom: 100px;
+    margin-left: 40%;
+    margin-right: 50%;
+    padding-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    padding: 10px;
+    width: 20%;
+}
+
 button {
     margin: .2em .1em;
     font-family: "Open Sans", sans-serif;
@@ -101,6 +121,34 @@ button:hover {
     color: var(--impact-red)
 }
 
-.favourite {
-    color: yellow;
+.box {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    border: 2px solid purple;
+    border-radius: 4px;
+    display: block;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+#createBtn {
+    margin-bottom: 100px;
+    margin-left: 40%;
+    margin-right: 50%;
+    padding-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    padding: 10px;
+    width: 20%;
+}
+
+.add-form {
+    padding: 30px 40px;
+}
+
+form {
+    padding: 30px 40px;
 }

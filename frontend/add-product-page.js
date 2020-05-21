@@ -1,9 +1,24 @@
+const backgroundTheme = localStorage.getItem("background-theme");
+
+if (backgroundTheme == "Sea")
+    document.body.style.backgroundImage = "url(sea.jpg)";
+
+if (backgroundTheme == "Pink")
+    document.body.style.backgroundImage = "url(pink.jpg)";
+
+
+if (backgroundTheme == "Party")
+    document.body.style.backgroundImage = "url(party.jpg)";
+
+
+
+
 const createNewProductBtn = document.querySelector("#createBtn");
 
 //Event listener for add button
 createNewProductBtn.addEventListener("click", async function() {
 
-    console.log("Sunt in eventListener");
+
     const name = document.querySelector("#name").value;
     const description = document.querySelector("#description").value;
     const select = document.querySelector("#size");

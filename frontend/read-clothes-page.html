@@ -8,13 +8,21 @@
 </head>
 
 <body>
-    <h1 class="title">Online Shop</h1>
+    <h1 class="title" id="title">Online Shop</h1>
     <h2 id="header"></h2>
+
+
+    <input type="file" id="input" />
+    <audio id="audio"></audio>
+
     <div class="voucher">
         <button id="removeVoucher">Remove voucher</button>
         <button id="addProduct">Add products</button>
         <button id="stopAlerts">Stop Alerts</button>
+        <button id="showPrice">Show my Price</button>
+        <p id="total_price">Price</p>
     </div>
+    <br></br>
     <list>
     </list>
     <div id="clothes-list">
@@ -23,12 +31,15 @@
             <h3>Price: 200</h3>
             <br />
             <div class="menu">
-                <button>Shop</button>
+                <button id="shop">Shop</button>
                 <i class="remove_item" aria-hidden="true">X</i>
+
 
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.4/randomColor.min.js"></script>
     <script src="read-clothes-page.js"></script>
 </body>
 

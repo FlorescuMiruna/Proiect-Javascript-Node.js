@@ -13,7 +13,7 @@ app.get('/login', function(req, res) {
     res.sendFile(__dirname + '/frontend/login-page.html');
 });
 app.get('/add-clothes', function(req, res) {
-    res.sendFile(__dirname + '/frontend/add-product.html');
+    res.sendFile(__dirname + '/frontend/add-product-page.html');
 });
 app.get('*', function(req, res) {
     res.status(404).sendFile(__dirname + '/frontend/page-not-found.html');
