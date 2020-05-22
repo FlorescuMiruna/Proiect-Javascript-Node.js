@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url("fundal.jpg");
+    background-image: url("./Imagini/fundal.jpg");
     background-size: cover;
     color: black;
 }

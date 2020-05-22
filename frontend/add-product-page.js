@@ -1,14 +1,14 @@
 const backgroundTheme = localStorage.getItem("background-theme");
 
 if (backgroundTheme == "Sea")
-    document.body.style.backgroundImage = "url(sea.jpg)";
+    document.body.style.backgroundImage = "url(./Imagini/sea.jpg)";
 
 if (backgroundTheme == "Pink")
-    document.body.style.backgroundImage = "url(pink.jpg)";
+    document.body.style.backgroundImage = "url(./Imagini/pink.jpg)";
 
 
 if (backgroundTheme == "Party")
-    document.body.style.backgroundImage = "url(party.jpg)";
+    document.body.style.backgroundImage = "url(./Imagini/party.jpg)";
 
 
 

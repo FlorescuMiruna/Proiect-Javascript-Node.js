@@ -2,14 +2,16 @@ const container = document.querySelector("#clothes-list");
 const removeVoucherBtn = document.querySelector("#removeVoucher");
 const addProductBtn = document.querySelector("#addProduct");
 const stopAlertBtn = document.querySelector("#stopAlerts");
-
 const showPriceBtn = document.querySelector("#showPrice");
+
 
 let discount = Math.random() * 100;
 
 discount = discount.toString();
 discount = "Reduceri de pana la " + discount + ' %';
 var clothesArray = [];
+var clothesArrayWoman = [];
+var clothesArrayMan = [];
 var totalPrice = 0;
 let color = randomColor(); //Folosesc o functie importata din npm
 
@@ -19,12 +21,16 @@ function showAlert() {
     setTimeout(function() {
         Swal.fire(discount);
     }, 4000);
-    console.log("alert");
+
 }
 showAlert();
 
 
 document.getElementById("showPrice").addEventListener("click", displayPrice);
+
+
+
+
 
 function displayPrice() {
     document.getElementById("total_price").innerHTML = totalPrice;
@@ -39,14 +45,14 @@ document.getElementById("title").style.color = color;
 const backgroundTheme = localStorage.getItem("background-theme");
 
 if (backgroundTheme == "Sea")
-    document.body.style.backgroundImage = "url(sea.jpg)";
+    document.body.style.backgroundImage = "url(./Imagini/sea.jpg)";
 
 if (backgroundTheme == "Pink")
-    document.body.style.backgroundImage = "url(pink.jpg)";
+    document.body.style.backgroundImage = "url(./Imagini/pink.jpg)";
 
 
 if (backgroundTheme == "Party")
-    document.body.style.backgroundImage = "url(party.jpg)";
+    document.body.style.backgroundImage = "url(./Imagini/party.jpg)";
 
 
 const listTag = document.getElementsByTagName("list");
@@ -84,11 +90,30 @@ stopAlertBtn.addEventListener("click", async function() {
 //Initialize
 
 function initializeItems() {
+
     const removeArray = document.querySelectorAll(".remove_item");
     const shopBtnArray = document.querySelectorAll("#shop");
 
     //Pentru fiecare element, cand apas butonul de delete,
     //facem trimitere catre server, catre metoda de delete
+    console.log("clothesArray:", clothesArray);
+
+    function filterItemsMan(event) {
+        return event.id.type == "Masc";
+    }
+    clothesArrayMan = clothesArray.filter(filterItemsMan);
+    console.log("clothesArray man:", clothesArrayMan);
+
+
+    function filterItemsWoman(event) {
+        return event.id.type == "Fem";
+    }
+    clothesArrayWoman = clothesArray.filter(filterItemsWoman);
+    console.log("clothesArray woman: ", clothesArrayWoman);
+
+
+
+
     removeArray.forEach(removeItemBtn => {
         removeItemBtn.addEventListener("click", async function() {
             let id = removeItemBtn.parentElement.parentElement.dataset.id;
@@ -113,8 +138,10 @@ function initializeItems() {
         })
     })
 
-}
 
+
+
+}
 
 function addVoucherInArray(voucherString = '') {
     iconArray.push(voucherString);
@@ -135,15 +162,13 @@ function showIconsList() {
 //Get products
 async function showViewPage() {
 
+
     localStorage.setItem("messageOffer", "Nu uita sa verifici ofertele");
     const response = await fetch('http://localhost:4200/get-clothes');
-    clothesArray = await response.json(); //Primim din beckend raspunsul, array-ul nostru de haine
-    //si il stocam intr-o variabila
-    container.innerHTML = ''
-    console.log("clothesArray:", clothesArray);
+    clothesArray = await response.json();
+
+    container.innerHTML = '';
     const user = localStorage.getItem("userName"); ///Luam numele user-ului din pagina cu formularul
-
-
     if (user && !isUserDisplayed) {
         isUserDisplayed = true;
         // Creez un nou element header
@@ -166,7 +191,7 @@ async function showViewPage() {
                 title: msj,
                 width: 600,
                 padding: '3em',
-                background: '#fff url(discount.jpg)',
+                background: '#fff url(./Imagini/discount.jpg)',
                 backdrop: `
                   rgba(0,0,123,0.4)
                   left top
