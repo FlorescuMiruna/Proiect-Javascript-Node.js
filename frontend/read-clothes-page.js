@@ -13,11 +13,12 @@ var clothesArray = [];
 var totalPrice = 0;
 let color = randomColor(); //Folosesc o functie importata din npm
 
+//Ne da un alert , care va aparea la 4 secunde dupa ce intru pe pagina
 function showAlert() {
-    // console.log(shopBtn.name);
-    // setTimeout(function() {
-    //     Swal.fire(discount);
-    // }, 30000);
+
+    setTimeout(function() {
+        Swal.fire(discount);
+    }, 4000);
     console.log("alert");
 }
 showAlert();
@@ -86,11 +87,13 @@ function initializeItems() {
     const removeArray = document.querySelectorAll(".remove_item");
     const shopBtnArray = document.querySelectorAll("#shop");
 
-
+    //Pentru fiecare element, cand apas butonul de delete,
+    //facem trimitere catre server, catre metoda de delete
     removeArray.forEach(removeItemBtn => {
         removeItemBtn.addEventListener("click", async function() {
             let id = removeItemBtn.parentElement.parentElement.dataset.id;
-            console.log("id este", id)
+            console.log("id este", id);
+            //Ii spunem ce element din server sa stearga, adaugand id-ul
             const url = "http://localhost:4200/delete-clothes/" + id;
             console.log(url);
             const status = await deleteProduct(url);
@@ -99,6 +102,7 @@ function initializeItems() {
         })
     });
 
+    //Cand apasam butonul de shop vrem sa ne adune pretul acestuia intr-o variabila
     shopBtnArray.forEach(shopItemBtn => {
         shopItemBtn.addEventListener("click", async function() {
             const id = shopItemBtn.parentElement.parentElement.dataset.id;
@@ -112,14 +116,12 @@ function initializeItems() {
 }
 
 
-
-
 function addVoucherInArray(voucherString = '') {
     iconArray.push(voucherString);
     console.log(voucherString);
 }
 
-//Icon list to use pop function from array/Voucher list
+//Am folosit functia de pop
 function showIconsList() {
     iconArray.forEach(icon => {
         const view = `<div class="item">
@@ -132,12 +134,13 @@ function showIconsList() {
 
 //Get products
 async function showViewPage() {
-    localStorage.setItem("messageOffer", "Nu uita sa verifici ofertele");
 
+    localStorage.setItem("messageOffer", "Nu uita sa verifici ofertele");
     const response = await fetch('http://localhost:4200/get-clothes');
-    clothesArray = await response.json();
+    clothesArray = await response.json(); //Primim din beckend raspunsul, array-ul nostru de haine
+    //si il stocam intr-o variabila
     container.innerHTML = ''
-    console.log("clothesArray", clothesArray);
+    console.log("clothesArray:", clothesArray);
     const user = localStorage.getItem("userName"); ///Luam numele user-ului din pagina cu formularul
 
 
@@ -153,6 +156,9 @@ async function showViewPage() {
         var currentHeader = document.getElementById("header");
         document.body.insertBefore(header, currentHeader);
     }
+
+    //La fiecare 10 de secunde va afisa mesajul stocal in localStorege,pana cand 
+    //apelam functia de clearInterval
     myInterval = setInterval(function() {
         if (localStorage.getItem("messageOffer")) {
             const msj = localStorage.getItem("messageOffer");
@@ -168,19 +174,15 @@ async function showViewPage() {
                 `
             })
 
-        } else {
-
-            alert("Verifica vouchere!");
         }
-    }, 100000);
+    }, 10000);
     showIconsList(iconArray);
     console.log(localStorage.getItem("userName"));
 
-    //Folosim Template literals
+    //Folosim Template literals 
 
     clothesArray.forEach(element => {
         const item = Object.values(element)[0];
-
         const product = `<div class="item" data-id=${item.id}>
         <h3>Name: ${item.name}</h3>
         <h3>Price: ${item.price}</h3>

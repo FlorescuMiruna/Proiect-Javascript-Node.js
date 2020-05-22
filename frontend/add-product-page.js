@@ -30,6 +30,7 @@ createNewProductBtn.addEventListener("click", async function() {
     const price = document.getElementById("price").value;
     const image = document.querySelector("#image").value;
 
+    //Acesta va fi noul nostru item, caruia ii dam proprietatile selectate in formular
     const newProductBody = {
         name,
         description,
@@ -38,7 +39,7 @@ createNewProductBtn.addEventListener("click", async function() {
         price,
         image
     }
-    console.log("Product", newProductBody);
+    console.log("Product:", newProductBody);
     const url = 'http://localhost:4200/add-clothes';
     const responseFromServer = await addNewProduct(url, newProductBody);
     console.log(responseFromServer)
@@ -46,7 +47,8 @@ createNewProductBtn.addEventListener("click", async function() {
 
 })
 
-//Add new product
+//Add new product 
+//Fetch catre backend
 async function addNewProduct(url = '', productBody = {}) {
     const response = await fetch(url, {
         method: 'POST', //Add product

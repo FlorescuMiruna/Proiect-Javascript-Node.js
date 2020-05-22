@@ -88,6 +88,8 @@ app.get('/', function(_, res) {
     res.send('Hello World! Welcome, I am Miruna! This is my server running...');
 });
 
+
+//READ
 //Trimite lista noastra cu obiecte si statusul 200 "Request succeeded"
 app.get('/get-clothes', function(_, res) {
     res.status(200).send(clothes.sort((itemA, itemB) => itemA.id - itemB.id).map(copyRequestBody));
@@ -106,6 +108,7 @@ app.get('/getById/:id', function(req, res) {
     }
 });
 
+//DELETE
 //Daca elementul exista il stergem, daca nu trimite statusul 404 "Not found"
 app.delete('/delete-clothes/:id', function(req, res) {
     const element = clothes.find(item => item.id == req.params.id);
@@ -119,6 +122,8 @@ app.delete('/delete-clothes/:id', function(req, res) {
     }
 });
 
+
+//UPDATE
 //Modifica item-ul pe care il ia dupa id 
 app.put('/edit-clothes/:id', function(req, res) {
     const element = clothes.find(item => item.id == req.params.id);
@@ -133,7 +138,7 @@ app.put('/edit-clothes/:id', function(req, res) {
 
 });
 
-
+//CREATE
 app.post('/add-clothes', function(req, res) { //Create new product
     const id = uid(5); //Se creeaza un id unic pentru prosusul nostru
     const newProduct = copyRequestBody(id, req.body || {});
