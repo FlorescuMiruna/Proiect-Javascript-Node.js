@@ -15,13 +15,13 @@ backgroundTheme.addEventListener("change", function() {
         //Retinem valoarea cu Local Storage ca sa putem modifica si celelalte pagini
 
     if (backgroundTheme.value == "Sea")
-        document.body.style.backgroundImage = "url(sea.jpg)";
+        document.body.style.backgroundImage = "url(./Imagini/sea.jpg)";
 
     if (backgroundTheme.value == "Pink")
-        document.body.style.backgroundImage = "url(pink.jpg)";
+        document.body.style.backgroundImage = "url(./Imagini/pink.jpg)";
 
     if (backgroundTheme.value == "Party")
-        document.body.style.backgroundImage = "url(party.jpg)";
+        document.body.style.backgroundImage = "url(.Imagini/party.jpg)";
 
 
 })
@@ -73,7 +73,7 @@ registerButton.addEventListener("keyup", function(event) {
         } else {
             //Daca parola e valida, ne duce pe pagina noastra
             alert(`Welcome ${user.name}. Your email account is: ${user.email}`);
-            window.location.replace("file:///C:/Users/Miruna/Desktop/web/Proiect/javascript-project/frontend/read-clothes-page.html");
+            window.location.replace("file:///C:/Users/Miruna/Desktop/Proiect/javascript-project/frontend/read-clothes-page.html");
         }
     }
 })

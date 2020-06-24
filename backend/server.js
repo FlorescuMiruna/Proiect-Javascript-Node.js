@@ -84,6 +84,7 @@ function copyRequestBody(id, { name, category, price, description, image, size, 
     return { id, name, category, price, description, image, size, type };
 }
 
+
 app.get('/', function(_, res) {
     res.send('Hello World! Welcome, I am Miruna! This is my server running...');
 });

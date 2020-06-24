@@ -43,7 +43,7 @@ createNewProductBtn.addEventListener("click", async function() {
     const url = 'http://localhost:4200/add-clothes';
     const responseFromServer = await addNewProduct(url, newProductBody);
     console.log(responseFromServer)
-    window.location.replace("file:///C:/Users/Miruna/Desktop/web/Proiect/javascript-project/frontend/read-clothes-page.html");
+    window.location.replace("file:///C:/Users/Miruna/Desktop/Proiect/javascript-project/frontend/read-clothes-page.html");
 
 })
 

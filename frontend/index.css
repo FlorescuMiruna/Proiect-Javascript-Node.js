@@ -152,3 +152,22 @@ button:hover {
 form {
     padding: 30px 40px;
 }
+
+.F {
+    border: 5px solid var(--main-blue);
+    padding: 1.5%;
+    display: inline-block;
+    background-image: url("./Imagini/yellow.jpg");
+}
+
+.M {
+    border: 5px solid var(--main-blue);
+    padding: 1.5%;
+    display: inline-block;
+    background-image: url("./Imagini/blue.jpg");
+}
+
+#answer {
+    color: crimson;
+    text-shadow: 2px 2px black;
+}

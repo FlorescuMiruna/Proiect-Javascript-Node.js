@@ -65,7 +65,7 @@ var isUserDisplayed = false;
 addProductBtn.addEventListener("click", async function(event) {
     //Se opreste la click-ul efectuat si nu se propaga mai departe in copii
     event.preventDefault();
-    window.location.replace("file:///C:/Users/Miruna/Desktop/web/Proiect/javascript-project/frontend/add-product-page.html");
+    window.location.replace("file:///C:/Users/Miruna/Desktop/Proiect/javascript-project/frontend/add-product-page.html");
 });
 
 
