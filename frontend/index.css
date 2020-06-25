@@ -3,6 +3,7 @@
     --main-blue: rgb(0, 45, 68);
     --second-blue: #36A1D4;
     --impact-red: rgb(145, 26, 224);
+    --red: rgb(255, 51, 0);
 }
 
 body {
@@ -170,4 +171,57 @@ form {
 #answer {
     color: crimson;
     text-shadow: 2px 2px black;
+}
+
+#s1,
+#s11 {
+    background-image: url("./Imagini/s1.jpg");
+    background-size: cover;
+}
+
+#s2,
+#s21 {
+    background-image: url("./Imagini/s2.jpg");
+    background-size: cover;
+}
+
+#s3,
+#s31 {
+    background-image: url("./Imagini/s3.jpg");
+    background-size: cover;
+}
+
+#s4,
+#s41 {
+    background-image: url("./Imagini/s4.jpg");
+    background-size: cover;
+}
+
+#s5,
+#s51 {
+    background-image: url("./Imagini/s5.jpg");
+    background-size: cover;
+}
+
+.sectiune1 {
+    padding: 2%;
+    margin: auto;
+    width: 150px;
+    height: 200px;
+    padding: 2.5%;
+    display: inline-block;
+    text-align: center;
+    text-emphasis-color: white;
+    border: 5px solid var(--red);
+}
+
+.sectiune2 {
+    padding: 2%;
+    margin: auto;
+    width: 150px;
+    height: 200px;
+    padding: 2.5%;
+    display: inline-block;
+    text-align: center;
+    text-emphasis-color: white;
 }
