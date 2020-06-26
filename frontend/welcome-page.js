@@ -1,6 +1,8 @@
 const logInButton = document.querySelector("#logIn");
 const backButton = document.querySelector("#back");
 const showAge = document.querySelector("#showAge");
+const womenClothesButton = document.querySelector("#women");
+const menClothesButton = document.querySelector("#men");
 
 logInButton.addEventListener("click", function(event) {
     window.location.replace("file:///C:/Users/Miruna/Desktop/Proiect/javascript-project/frontend/login-page.html");
@@ -9,9 +11,56 @@ backButton.addEventListener("click", function(event) {
     window.location.replace("file:///C:/Users/Miruna/Desktop/Proiect/javascript-project/frontend/start-page.html");
 })
 
+//Task de nivel 1: 9.Colectii dinamice versus statice
 
+//Elementele din lista sunt selectate dupa clasa si puse intr-un vector.
+//Pentru ca am folosit "querySelector" colectia este statica
+
+let colectieStatica = document.querySelectorAll(".F");
+womenClothesButton.addEventListener("click", function(event) {
+    //Facem sa dispara elementele de pe pozitii divizibile cu 3
+    for (let i = 0; i < colectieStatica.length; i++) {
+        if ((i + 1) % 3 == 0)
+
+            colectieStatica[i].style.display = "none";
+    }
+})
+
+//Elementele din lista sunt selectate dupa clasa si puse intr-un vector.
+//Pentru ca am folosit "getElementsByClassName" colectia este dinamica
+
+let colectieDinamica = document.getElementsByClassName("M");
+menClothesButton.addEventListener("click", function(event) {
+
+    //Facem sa dispara elementele de pe pozitii divizibile cu 3
+    for (let i = 0; i < colectieDinamica.length; i++) {
+        if ((i + 1) % 3 == 0)
+
+            colectieDinamica[i].style.display = "none";
+    }
+})
+
+//Task de nivel 1: 5.Inversare lista
+
+//Pentru fiecare din cele doua liste din pagina
+//cand se da dublu-click pe o lista inversam elementele din ea, adica "copiii" acesteia
+document.getElementById("lista1").addEventListener("dblclick", reverseList1);
+document.getElementById("lista2").addEventListener("dblclick", reverseList2);
+
+function reverseList1() {
+    let lista = document.getElementById("lista1");
+    let l = lista.childNodes.length;
+    while (l--)
+        lista.appendChild(lista.childNodes[l]);
+}
+
+function reverseList2() {
+    let lista = document.getElementById("lista2");
+    let l = lista.childNodes.length;
+    while (l--)
+        lista.appendChild(lista.childNodes[l]);
+}
 //Task de nivel 2: 1.Varsta utilizator
-
 
 
 showAge.addEventListener("click", function(event) {
@@ -69,7 +118,7 @@ showAge.addEventListener("click", function(event) {
 
 })
 
-//Task de nivel 3
+//Task de nivel 3: 17.Posibilitatea utilizatorului de a marca sectiuni din site ca fiind importante
 
 let element1Down = document.getElementById("s1");
 let element2Down = document.getElementById("s2");
@@ -158,6 +207,7 @@ element1Down.addEventListener("click", function(event) {
 
     localStorage.setItem("ok1", true);
     showMarkedSections();
+
 
 });
 

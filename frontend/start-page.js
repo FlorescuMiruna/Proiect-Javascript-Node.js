@@ -1,7 +1,6 @@
 const enterShopButton = document.querySelector("#enterShop");
 const hideImageButton = document.querySelector("#hideImage");
-const womenClothesButton = document.querySelector("#women");
-const menClothesButton = document.querySelector("#men");
+
 const submitButton = document.querySelector("#submit");
 let inputText = document.querySelector("#textInput");
 
@@ -46,35 +45,6 @@ hideImageButton.addEventListener("click", function(event) {
 
         imagesVisibility = true;
 
-    }
-})
-
-//Task de nivel 1: 9.Colectii dinamice versus statice
-
-//Elementele din lista sunt selectate dupa clasa si puse intr-un vector.
-//Pentru ca am folosit "querySelector" colectia este statica
-
-let colectieStatica = document.querySelectorAll(".F");
-womenClothesButton.addEventListener("click", function(event) {
-    //Facem sa dispara elementele de pe pozitii divizibile cu 3
-    for (let i = 0; i < colectieStatica.length; i++) {
-        if ((i + 1) % 3 == 0)
-
-            colectieStatica[i].style.display = "none";
-    }
-})
-
-//Elementele din lista sunt selectate dupa clasa si puse intr-un vector.
-//Pentru ca am folosit "getElementsByClassName" colectia este dinamica
-
-let colectieDinamica = document.getElementsByClassName("M");
-menClothesButton.addEventListener("click", function(event) {
-
-    //Facem sa dispara elementele de pe pozitii divizibile cu 3
-    for (let i = 0; i < colectieDinamica.length; i++) {
-        if ((i + 1) % 3 == 0)
-
-            colectieDinamica[i].style.display = "none";
     }
 })
 
@@ -123,7 +93,7 @@ function showMyWords() {
 }
 var timer = setInterval(showMyWords, 333);
 
-// Task de nivel 2: Intrebare in timp limita
+// Task de nivel 2: 8.Intrebare in timp limita
 
 let buttonClicked = false;
 submitButton.addEventListener('click', function(event) {
@@ -149,7 +119,7 @@ inputText.addEventListener('click', function(event) {
             document.getElementById("question1").style.display = "none";
             document.getElementById("question2").style.display = "none";
             submitButton.style.display = "none";
-            document.getElementById("textInput").disabled = true;
+            document.getElementById("textInput").disabled = true; //Dezactivam inputul
 
         } else {
             //Daca s-a facut click pe buton apare mesajul corespunzator 
@@ -166,23 +136,156 @@ inputText.addEventListener('click', function(event) {
 
 })
 
-//Task de nivel 1: 5.Inversare lista
 
-//Pentru fiecare din cele doua liste din pagina
-//cand se da dublu-click pe o lista inversam elementele din ea, adica "copiii" acesteia
-document.getElementById("lista1").addEventListener("dblclick", reverseList1);
-document.getElementById("lista2").addEventListener("dblclick", reverseList2);
+//Task de nivel 3: 17.Posibilitatea utilizatorului de a marca sectiuni din site ca fiind importante
 
-function reverseList1() {
-    let lista = document.getElementById("lista1");
-    let l = lista.childNodes.length;
-    while (l--)
-        lista.appendChild(lista.childNodes[l]);
+let element1Down = document.getElementById("s1cupon");
+let element2Down = document.getElementById("s2cupon");
+let element3Down = document.getElementById("s3cupon");
+let element4Down = document.getElementById("s4cupon");
+let element5Down = document.getElementById("s5cupon");
+
+let element1Up = document.getElementById("s11cupon");
+let element2Up = document.getElementById("s21cupon");
+let element3Up = document.getElementById("s31cupon");
+let element4Up = document.getElementById("s41cupon");
+let element5Up = document.getElementById("s51cupon");
+
+console.log(element1Down.style);
+
+
+function showMarkedSections() {
+    //Functia de afisare a cupanelor
+    //Cele marcate vor fi afisate in partea de sus a paginii
+    //cu chenar rosu, iar cele nemarcate in partea de jos 
+
+    if (localStorage.getItem("ok1cupon") === "true") {
+
+        element1Down.style.visibility = "hidden";
+        element1Up.style.visibility = "visible";
+    }
+    if (localStorage.getItem("ok1cupon") === 'false') {
+
+        element1Down.style.visibility = "visible";
+        element1Up.style.visibility = "hidden";
+    }
+
+    if (localStorage.getItem("ok2cupon") === 'true') {
+
+        element2Down.style.visibility = "hidden";
+        element2Up.style.visibility = "visible";
+    }
+    if (localStorage.getItem("ok2cupon") === 'false') {
+
+        element2Down.style.visibility = "visible";
+        element2Up.style.visibility = "hidden";
+    }
+
+    if (localStorage.getItem("ok3cupon") === 'true') {
+
+        element3Down.style.visibility = "hidden";
+        element3Up.style.visibility = "visible";
+    }
+    if (localStorage.getItem("ok3cupon") === 'false') {
+
+        element3Down.style.visibility = "visible";
+        element3Up.style.visibility = "hidden";
+    }
+
+    if (localStorage.getItem("ok4cupon") === 'true') {
+
+        element4Down.style.visibility = "hidden";
+        element4Up.style.visibility = "visible";
+    }
+    if (localStorage.getItem("ok4cupon") === 'false') {
+
+        element4Down.style.visibility = "visible";
+        element4Up.style.visibility = "hidden";
+    }
+
+    if (localStorage.getItem("ok5cupon") === 'true') {
+
+        element5Down.style.visibility = "hidden";
+        element5Up.style.visibility = "visible";
+    }
+    if (localStorage.getItem("ok5cupon") === 'false') {
+
+        element5Down.style.visibility = "visible";
+        element5Up.style.visibility = "hidden";
+    }
+
+    console.log("ok1cupon", localStorage.getItem("ok1cupon"));
+    console.log("ok2cupon", localStorage.getItem("ok2cupon"));
+    console.log("ok2cupon", localStorage.getItem("ok2cupon"));
+    console.log("ok3cupon", localStorage.getItem("ok3cupon"));
+    console.log("ok4cupon", localStorage.getItem("ok4cupon"));
+    console.log("ok5cupon", localStorage.getItem("ok5cupon"));
 }
 
-function reverseList2() {
-    let lista = document.getElementById("lista2");
-    let l = lista.childNodes.length;
-    while (l--)
-        lista.appendChild(lista.childNodes[l]);
-}
+
+element1Down.addEventListener("click", function(event) {
+
+    // Pentru fiecare cupon pe care se da click pentru a fi marcat
+    //se retine in local storage intr-o variabila daca acesta este marcat sau nu
+    localStorage.setItem("ok1cupon", true);
+    showMarkedSections();
+
+
+});
+
+
+
+element2Down.addEventListener("click", function(event) {
+    localStorage.setItem("ok2cupon", true);
+    showMarkedSections();
+
+});
+
+
+
+element3Down.addEventListener("click", function(event) {
+    localStorage.setItem("ok3cupon", true);
+    showMarkedSections();
+
+});
+
+element4Down.addEventListener("click", function(event) {
+    localStorage.setItem("ok4cupon", true);
+    showMarkedSections();
+
+});
+
+element5Down.addEventListener("click", function(event) {
+    localStorage.setItem("ok5cupon", true);
+    showMarkedSections();
+
+});
+
+element1Up.addEventListener("click", function(event) {
+    localStorage.setItem("ok1cupon", false);
+    showMarkedSections();
+
+});
+
+element2Up.addEventListener("click", function(event) {
+    localStorage.setItem("ok2cupon", false);
+    showMarkedSections();
+
+});
+
+element3Up.addEventListener("click", function(event) {
+    localStorage.setItem("ok3cupon", false);
+    showMarkedSections();
+
+});
+element4Up.addEventListener("click", function(event) {
+    localStorage.setItem("ok4cupon", false);
+    showMarkedSections();
+
+});
+element5Up.addEventListener("click", function(event) {
+    localStorage.setItem("ok5cupon", false);
+    showMarkedSections();
+
+});
+showMarkedSections();

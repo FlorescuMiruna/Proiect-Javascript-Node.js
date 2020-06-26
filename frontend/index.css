@@ -215,6 +215,18 @@ form {
     border: 5px solid var(--red);
 }
 
+.sectiune1cupon {
+    padding: 2%;
+    margin: auto;
+    width: 70px;
+    height: 50px;
+    padding: 2.5%;
+    display: inline-block;
+    text-align: center;
+    text-emphasis-color: white;
+    border: 5px solid var(--red);
+}
+
 .sectiune2 {
     padding: 2%;
     margin: auto;
@@ -224,4 +236,16 @@ form {
     display: inline-block;
     text-align: center;
     text-emphasis-color: white;
+}
+
+.sectiune2cupon {
+    padding: 2%;
+    margin: auto;
+    width: 70px;
+    height: 50px;
+    padding: 2.5%;
+    display: inline-block;
+    text-align: center;
+    text-emphasis-color: white;
+    border: 5px solid var(--main-blue);
 }
